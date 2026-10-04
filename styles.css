@@ -1,0 +1,148 @@
+/* ===== Colores (modo claro) ===== */
+:root {
+  --fondo: #f7f8fa;
+  --superficie: #ffffff;
+  --texto: #1c2430;
+  --texto-suave: #5b6675;
+  --acento: #1f3a5f;
+  --acento-claro: #e6edf6;
+  --borde: #e2e6ec;
+}
+
+/* ===== Colores (modo oscuro, según el sistema) ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #0f141b;
+    --superficie: #171e27;
+    --texto: #e6eaf0;
+    --texto-suave: #9aa5b4;
+    --acento: #7fa8d8;
+    --acento-claro: #1d2a3a;
+    --borde: #263140;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+a { color: var(--acento); }
+
+/* ===== Navegación ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borde);
+}
+.logo { font-weight: 800; text-decoration: none; font-size: 1.2rem; }
+.nav nav { display: flex; gap: 20px; }
+.nav nav a { text-decoration: none; color: var(--texto-suave); font-size: 0.95rem; }
+.nav nav a:hover { color: var(--acento); }
+
+/* ===== Secciones ===== */
+main { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+section { padding: 64px 0; border-bottom: 1px solid var(--borde); }
+section:last-child { border-bottom: none; }
+h2 { font-size: 1.6rem; margin-bottom: 20px; color: var(--acento); }
+h3 { font-size: 1.05rem; }
+section p { margin-bottom: 12px; }
+
+/* ===== Presentación ===== */
+.hero { padding: 96px 0 72px; }
+.saludo { color: var(--texto-suave); }
+.hero h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15; margin: 4px 0 12px; }
+.subtitulo { font-size: 1.15rem; color: var(--texto-suave); }
+.ubicacion { color: var(--texto-suave); }
+
+.botones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.btn {
+  padding: 10px 20px;
+  border: 1px solid var(--acento);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn.principal { background: var(--acento); color: var(--superficie); }
+.btn:hover { opacity: 0.85; }
+
+/* ===== Datos destacados ===== */
+.datos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.datos div {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.datos strong { display: block; font-size: 1.8rem; color: var(--acento); }
+.datos span { font-size: 0.9rem; color: var(--texto-suave); }
+
+/* ===== Habilidades ===== */
+.grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.grupo h3 { margin-bottom: 10px; }
+.etiquetas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.etiquetas li {
+  background: var(--acento-claro);
+  color: var(--acento);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+.etiquetas.pequeñas li { font-size: 0.8rem; padding: 2px 10px; }
+
+/* ===== Experiencia (línea de tiempo) ===== */
+.linea-tiempo { list-style: none; border-left: 2px solid var(--borde); padding-left: 24px; }
+.linea-tiempo li { position: relative; margin-bottom: 32px; }
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  left: -31px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--acento);
+}
+.fecha { font-size: 0.85rem; color: var(--texto-suave); }
+.empresa { color: var(--texto-suave); font-style: italic; margin-bottom: 4px; }
+
+/* ===== Proyectos ===== */
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tarjeta p { margin: 0; color: var(--texto-suave); font-size: 0.95rem; }
+.tarjeta a { margin-top: auto; font-weight: 600; text-decoration: none; }
+.estado { margin-top: auto; font-size: 0.85rem; color: var(--texto-suave); }
+.proximo { border-style: dashed; }
+
+/* ===== Pie de página ===== */
+footer { text-align: center; padding: 32px; color: var(--texto-suave); font-size: 0.9rem; }
+
+/* ===== Celular ===== */
+@media (max-width: 600px) {
+  .nav { padding: 12px 16px; }
+  .nav nav { gap: 12px; }
+  .nav nav a { font-size: 0.85rem; }
+  main { padding: 0 16px; }
+  .datos { grid-template-columns: 1fr; }
+}
